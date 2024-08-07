@@ -1,10 +1,11 @@
-import { Home } from "./site/layouts/Home";
-
+import { Card} from "./components/Card.js";
+import './App.css'
 function App() {
   return (
     <div className="App">
-      <Home/> 
-    </div>
+<Card/>
+
+  </div>
   );
 }
 
