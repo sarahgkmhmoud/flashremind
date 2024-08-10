@@ -1,0 +1,137 @@
+:root{
+    --color-black: #0D243D;
+    --color-white:#ffffff;
+    --color-green: #39AD45;
+    --color-orange: #FFA800;
+    --color-red: #F93727;
+    /* add to main file*/
+    --color-blue: #2E82DB;
+
+    --text-color: var(--color-black);
+
+
+    --font-family-base: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-family-title: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    --font-size-small: 1.2rem;
+    --font-size-medium: 1.6rem;
+    --font-size-large: 1.8rem;
+    --font-size-x-large: 2.3rem;
+    --font-size-xx-large: 4.8rem;
+
+    --font-weight-regular: 400;
+    --font-weight-bold:700;
+
+    --line-height-small: 1.2;
+    --line-height-base: 1.5;
+    --line-height-big: 1.8;
+
+
+    --button-return-width: 50px;
+    --button-return-hight: 31px;
+    --button-return-width: 178px;
+    --button-return-hight: 30px;
+
+    --button-display: inline-block;
+    --button-padding: .5rem 1rem;
+    --button-border: 0.2rem solid var(--color-primary);
+    --button-color: var(--color-black);
+    --button-text-decoration: none;
+    --button-font-size: var(--font-size-large);
+    --button-hover-color: var(--color-white);
+    --button-hover-text-decoration: none;
+    --button-hover-background: var(--color-primary);
+
+
+}
+
+body {
+    color: var(--text-color);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-base);
+    background-color: lightgray;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--font-family-title);
+    font-weight: var(--font-weight-bold);
+}
+
+.Container {
+    background-color: var(--color-black);
+    width:60%;
+    height: 100vh;
+    border-radius: 20px;
+    color: var(--color-white);
+    padding: 20px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.text {
+    text-align: center;
+}
+
+.forms{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 450px;
+    height: 80px;
+    background-color: lightgray;
+    border-radius: 20px;
+}
+
+.input img {
+    margin: 0px 20px;
+}
+
+
+input{
+    height: 50px;
+    width: 400px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.submit-buttons {
+    display: flex;
+    margin: 60px auto;
+    gap: 30px;
+}
+
+button {
+    padding: var(--button-padding);
+   
+    color: #ffffff;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+button.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-blue);
+    width: 210px;
+    height: 60px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    border: none;
+}
