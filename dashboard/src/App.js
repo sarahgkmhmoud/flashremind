@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "./components/Card.js";
 import { EditBox } from "./components/Editbox.js";
 import './App.css';
@@ -7,9 +7,18 @@ import {BrowserRouter, Routes, Route } from "react-router-dom"
 
 
 function App() {
-  
+    const[index, setindex] = useState(0);
 
-  
+    const handleNextClick = (user) => {
+      if (index < user.cardscategory.categorycards.length - 1) {
+        setindex(index + 1);
+      }
+    };
+    const handleprevClick = () => {
+      if (index > 0) {
+        setindex(index - 1);
+      }
+    }; 
       
   const Editboxbath = () => {
     return (
@@ -21,14 +30,21 @@ function App() {
         <Route path="/edit" element={<EditBox 
         key= {user.id}
         title={user.cardscategory.categoryname} 
-        question= {user.cardscategory.categorycards[0].question}
-        answer = {user.cardscategory.categorycards[0].answer}
-        />}/>     <Route path="card" element={<Card
-    key= {user.id}
-    title={user.cardscategory.categoryname} 
-    question= {user.cardscategory.categorycards[0].question}
-    answer = {user.cardscategory.categorycards[0].answer}
-    />}/>
+        question= {user.cardscategory.categorycards[index].question}
+        answer = {user.cardscategory.categorycards[index].answer}
+         />}/>     
+         <Route path="card" element={
+              <Card
+              key= {user.id}
+              title={user.cardscategory.categoryname} 
+              question= {user.cardscategory.categorycards[index].question}
+              answer = {user.cardscategory.categorycards[index].answer}
+              nextclick ={() => handleNextClick(user)}
+              prevclick ={() => handleprevClick()}
+
+              />
+}
+    />
         </Routes>
         </BrowserRouter>
       )

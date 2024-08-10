@@ -3,12 +3,25 @@ import '../../src/App.css'
 // import nextIcon from '../assets/next.png';
 import returnIcon from '../assets/Return.png';
 import discoverIcon from '../assets/discover.png';
+import { useNavigate } from 'react-router-dom';
+
+export function NavigatCardButton() {
+  const navigate = useNavigate(); // Hook to navigate programmatically
+
+  const goTocard = () => {
+    navigate('/card'); 
+  }// Navigate to the "About" component
+    return(
+      <button onClick={goTocard}>
+      <img alt='next' src={returnIcon} width={50} height={31}/>
+      </button>    )
+  };
 
 export const EditBox =({title, question, answer}) => {
   return (
     <div className='Container'> 
       <div className='return'>
-      <img alt='next' src={returnIcon} width={50} height={31}/>
+<NavigatCardButton/>
       </div>
       <div className='text'>
         <h3>{title}</h3>

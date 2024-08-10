@@ -146,9 +146,7 @@ h1, h2, h3, h4, h5, h6{
     display: inline;
     margin-right: 5px;
 }
-.discover {
 
-}
 .transparent {
     width:fit-content;
     height:fit-content;
@@ -160,7 +158,12 @@ h1, h2, h3, h4, h5, h6{
     margin-top: 10px;
     height: 150px;
     overflow-x: scroll;
-    visibility: hidden ;
+}
+.visible{
+    visibility: visible;
+}
+.hidden {
+    visibility: hidden;
 }
 textarea.boxAnswer{
     visibility: visible ;
@@ -177,28 +180,27 @@ textarea.boxAnswer{
 }
 
 .nextCard {
-    position: absolute;
-    top: 37rem;
-    right: 25%;
+display: flexbox;
+justify-content: center;
+align-items: flex-end;
 }
 
 
 div.btns {
     display: flex;
-    justify-content: center;
-    flex-flow: column;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 10px;
-    width: 80%;
+    gap: 1px;
+ 
 }
 
 button {
     padding: var(--button-padding);
-    width: 178px;
-    height: 30%;
+   
     color: #ffffff;
     border-radius: 20px;
-    width: 80%;
+    width: fit-content;
+    height: fit-content;
 }
 
 button.green {
@@ -211,10 +213,16 @@ button.orange {
     background-color: var(--color-orange);
 }
 
+Link.edit {
+    color: #ffffff;
+    text-decoration: none;
+}
 
 
 
-
+.sharebuttom {
+    border-radius: 50%;
+}
 
 
 
