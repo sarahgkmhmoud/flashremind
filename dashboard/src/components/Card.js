@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import '../../src/App.css'
 import nextIcon from '../assets/next.png';
 import returnIcon from '../assets/Return.png';
-import discoverIcon from '../assets/discover.png';
 import { useNavigate } from "react-router-dom";
 import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton} from 'react-share'
 
@@ -37,12 +36,8 @@ export function NavigatEditButton() {
     )
   };
 
-export const Card =({title, question, answer, nextclick, prevclick,}) => {
-  const [isvisible, setvisible] = useState(false);
-
-const Toggleanswer = ()=>{
-  setvisible(!isvisible)
-}
+export const Card =({title, question, answer, nextclick, prevclick,children}) => {
+  
   return (
     <div className='Container'> 
       <div className='return'>
@@ -57,12 +52,7 @@ const Toggleanswer = ()=>{
         <div className='Question text'><h4>{question}</h4></div>
         <div className='text'>
             <p className='inline'>Answer</p>
-            <button onClick={Toggleanswer}>
-            <img  alt='discover' src={discoverIcon} width={19.94} height={15.97}/>
-            </button>
-          <div className={isvisible ? 'visible boxAnswer' : 'hidden boxAnswer'}>
-            <p>{answer}</p>
-            </div>
+       {children}
           </div>       
           <div className='nextCard'>
           <button onClick={prevclick}>
