@@ -1,0 +1,24 @@
+[
+    {
+        "id":0,
+        "userName":"sarah",
+        "password":"",
+        "categories": [{
+            "categoryname":"Animals",
+            "cards": [
+                {
+                "id" : 0,
+                "question":"Hope",
+                "answer":"To wish for a particular event that one considers possible."
+            },
+            {
+                "id" : 1,
+                "question":"Happenis",
+                "answer":"To smile what ever you did."
+            }
+        ]          
+                        }]
+                        
+
+    }
+]

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {  } from 'react'
 import '../../src/App.css'
 // import nextIcon from '../assets/next.png';
 import returnIcon from '../assets/Return.png';
@@ -18,6 +18,7 @@ export function NavigatCardButton() {
   };
 
 export const EditBox =({title, question, answer}) => {
+  // const [values, setValues] = useState()
   return (
     <div className='Container'> 
       <div className='return'>
