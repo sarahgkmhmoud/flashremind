@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton} from 'react-share'
 
 export const ShareCard = () => {
+ 
   const currentUrl = 'www.google.com'/*window.location.href*/
   return(
     <>
@@ -29,7 +30,7 @@ export function NavigatEditButton() {
   const navigate = useNavigate(); // Hook to navigate programmatically
 
   const goToEdit = () => {
-    navigate('/edit'); 
+    navigate('/card/edit'); 
   }// Navigate to the "About" component
     return(
       <button className='edit orange H' onClick={goToEdit} >Edit</button>
