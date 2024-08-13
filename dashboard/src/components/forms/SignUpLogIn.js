@@ -6,14 +6,16 @@ import './form.css'
 
 export const SignUpLogIn = () => {
   const [authAction, setAuthAction] = useState('Login');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [passWord, setPassWord] = useState('');
 
-  function signUp() {
-    setAuthAction('Create Account')
-  };
+  const signUp = () => setAuthAction('Create Account');
+  const logIn = () => setAuthAction('Login');
+  const handleNameChange = (e) => setFullName(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePassWordChange = (e) => setPassWord(e.target.value);
 
-  function logIn() {
-    setAuthAction('Login')
-  };
 
   return (
     <div className='Container'>
@@ -24,19 +26,19 @@ export const SignUpLogIn = () => {
       <div className='forms'>
 
       { authAction === 'Create Account'? 
-        <div className='input'>
+        <div className='input' >
         <img src={usr_icon} alt='' />
-        <input type='text' placeholder='Full Name' />
+        <input type='text' placeholder='Full Name' value={fullName} onChange={handleNameChange} />
       </div>:<div></div>
       }
 
-        <div className='input'>
+        <div className='input' >
           <img src={email_icon} alt='' />
-          <input type='email' placeholder='Email' />
+          <input type='email' placeholder='Email' value={email} onChange={handleEmailChange} />
         </div>
         <div className='input'>
           <img src={password_icon} alt='' />
-          <input type='password' placeholder='Password' />
+          <input type='password' placeholder='Password' value={passWord} onChange={handlePassWordChange}/>
         </div>
       </div>
       <div className='submit-buttons'>
