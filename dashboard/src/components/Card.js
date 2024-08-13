@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../../src/App.css'
 import nextIcon from '../assets/next.png';
 import returnIcon from '../assets/Return.png';
+import discoverIcon from '../assets/discover.png';
 import { useNavigate } from "react-router-dom";
 import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton} from 'react-share'
 
 export const ShareCard = () => {
- 
   const currentUrl = 'www.google.com'/*window.location.href*/
   return(
     <>
@@ -30,21 +30,38 @@ export function NavigatEditButton() {
   const navigate = useNavigate(); // Hook to navigate programmatically
 
   const goToEdit = () => {
-    navigate('/card/edit'); 
+    navigate('/edit'); 
   }// Navigate to the "About" component
     return(
       <button className='edit orange H' onClick={goToEdit} >Edit</button>
     )
   };
-
-export const Card =({title, question, answer, nextclick, prevclick,children}) => {
+  export function NavigatcreateButton() {
+    const navigate = useNavigate(); // Hook to navigate programmatically
   
+    const goToCreat = () => {
+      navigate('/Createcard'); 
+    }// Navigate to the "About" component
+      return(
+        <button className='green' onClick={goToCreat}>
+        Add+
+        
+          </button>      )
+    };
+
+export const Card =({title, question, answer, nextclick, prevclick,}) => {
+  const [isvisible, setvisible] = useState(false);
+
+const Toggleanswer = ()=>{
+  setvisible(!isvisible)
+}
   return (
     <div className='Container'> 
       <div className='return'>
         <button>
         <img alt='next' src={returnIcon} width={50} height={31}/>
         </button>
+     <NavigatcreateButton/> 
       </div>
       <div className='text'>
         <h3>{title}</h3>
@@ -53,7 +70,12 @@ export const Card =({title, question, answer, nextclick, prevclick,children}) =>
         <div className='Question text'><h4>{question}</h4></div>
         <div className='text'>
             <p className='inline'>Answer</p>
-       {children}
+            <button onClick={Toggleanswer}>
+            <img  alt='discover' src={discoverIcon} width={19.94} height={15.97}/>
+            </button>
+          <div className={isvisible ? 'visible boxAnswer' : 'hidden boxAnswer'}>
+            <p>{answer}</p>
+            </div>
           </div>       
           <div className='nextCard'>
           <button onClick={prevclick}>
