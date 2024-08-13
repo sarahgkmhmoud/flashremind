@@ -3,6 +3,7 @@ import { Card } from "./components/Card.js";
 import { EditBox } from "./components/Editbox.js";
 import { Createcard } from "./components/Createcard.js";
 import {SignUpLogIn} from "./components/forms/SignUpLogIn.js"
+import {Categories} from "./components/Categories.js"
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import discoverIcon from './assets/discover.png';
@@ -64,6 +65,7 @@ function App() {
           />
           <Route path="/Createcard" element={<Createcard />} />
           <Route path="/signup" element={    <SignUpLogIn />} />
+          <Route path= "/Categories" element={<Categories userID={1}/>}></Route>
         </Routes>
       </div>
     </BrowserRouter>

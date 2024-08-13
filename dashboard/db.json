@@ -9,7 +9,7 @@
         "password":"123"
     },
     {
-        "id": 0,
+        "id": 1,
     "userName":"sarah",
     "email": "sarahgad91@gmail.com",
     "password":"123"
@@ -21,6 +21,63 @@
         "userId": 0,
         "categoryId": 0,
         "categoryname":"Animals",
+        "cards": [
+            {
+                "cardId": 0,
+
+            "question":"Hope",
+            "answer":"To wish for a particular event that one considers possible."
+        },
+        {
+            "cardId": 1,
+
+            "question":"Happenis",
+            "answer":"To smile what ever you did."
+        }
+    ]          
+    },
+    {
+        "userId": 0,
+        "categoryId": 1,
+        "categoryname":"Ahmed",
+        "cards": [
+            {
+                "cardId": 0,
+
+            "question":"Hope",
+            "answer":"To wish for a particular event that one considers possible."
+        },
+        {
+            "cardId": 1,
+
+            "question":"Happenis",
+            "answer":"To smile what ever you did."
+        }
+    ]          
+    },
+    {
+        "userId": 1,
+        "categoryId": 2,
+        "categoryname":"Hind",
+        "cards": [
+            {
+                "cardId": 0,
+
+            "question":"Hope",
+            "answer":"To wish for a particular event that one considers possible."
+        },
+        {
+            "cardId": 1,
+
+            "question":"Happenis",
+            "answer":"To smile what ever you did."
+        }
+    ]          
+    },
+    {
+        "userId": 0,
+        "categoryId": 3,
+        "categoryname":"Sarah",
         "cards": [
             {
                 "cardId": 0,
