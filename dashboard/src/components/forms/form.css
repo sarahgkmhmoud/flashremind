@@ -135,3 +135,9 @@ button.submit {
     font-size: var(--font-size-small);
     border: none;
 }
+
+
+button.turngray {
+    background: lightgray;
+    color: gray;
+}

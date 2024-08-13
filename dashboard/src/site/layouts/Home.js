@@ -2,14 +2,14 @@ import React from 'react'
 import { Nav } from '../../components/frame/Nav'
 import { Header } from '../../components/frame/Header'
 import { Footer } from '../../components/frame/Footer'
-import { LogIn } from '../../components/forms/LogIn'
+import { SignUpLogIn } from '../../components/forms/SignUpLogIn'
 
 export const Home = () => {
   return (
     <>
     <Nav />
     <Header />
-    <LogIn />
+    <SignUpLogIn />
     <Footer/>
     </>
   )
