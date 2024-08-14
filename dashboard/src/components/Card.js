@@ -26,17 +26,7 @@ export const ShareCard = () => {
   );
 };
 
-export function NavigatEditButton() {
-  const navigate = useNavigate(); // Hook to navigate programmatically
 
-  const goToEdit = () => {
-    navigate('/card/edit');
-  }; // Navigate to the "Edit" component
-
-  return (
-    <button className='edit orange H' onClick={goToEdit}>Edit</button>
-  );
-}
 
 export function NavigatcreateButton() {
   const navigate = useNavigate(); // Hook to navigate programmatically
@@ -74,7 +64,10 @@ export const Card = () => {
   const [categoryName, setCategoryName] = useState('');
   const [index, setIndex] = useState(0);
   const [isVisible, setVisible] = useState(false);
-
+  const navigate = useNavigate();
+  const handleEditClick = () => {
+    navigate(`/card/edit/${userID}/${CategoryID}/${index}`);
+  };
   useEffect(() => {
     if (userID !== null) {
       axios.get(`http://localhost:3001/categories`)
@@ -153,8 +146,7 @@ export const Card = () => {
         )}
       </div>
       <div className='btns'>
-        <NavigatEditButton />
-        <button className='delete red'>Delete</button>
+      <button className='edit orange H' onClick={handleEditClick}>Edit</button>        <button className='delete red'>Delete</button>
         <ShareCard />
       </div>
     </div>

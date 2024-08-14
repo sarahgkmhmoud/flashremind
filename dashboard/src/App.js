@@ -16,11 +16,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-           <Route 
-            path="/card/edit" 
-            element={<EditBox/>}
-          />     
-          <Route path="//card/:userID/:CategoryID" element={<Card />}/>
+        <Route path="/card/edit/:userID/:CategoryID/:index" element={<EditBox />} />    
+          <Route path="/card/:userID/:CategoryID" element={<Card />}/>
           <Route path="/Createcard" element={<Createcard />} />
           <Route path="/signup" element={    <SignUpLogIn />} />
           <Route path= "/Categories" element={<Categories userID={0}/>}></Route>
