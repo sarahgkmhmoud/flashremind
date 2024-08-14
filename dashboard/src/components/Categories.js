@@ -3,18 +3,13 @@ import '../../src/App.css'
 import axios from 'axios';
 import nextIcon from '../assets/next.png';
 import { useNavigate } from "react-router-dom";
-export function NavigatCardButton() {
-  const navigate = useNavigate(); // Hook to navigate programmatically
-
-  const goTocard = () => {
-    navigate('/card'); 
-  }// Navigate to the "About" component
-    return(
-      <button onClick={goTocard}>
-            <img alt='next' src={nextIcon} width={30} height={30} />
-            </button>)
-  };
+  
 export const Categories =({userID}) => {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (CategoryID) => {
+    navigate(`/card/${userID}/${CategoryID}`);
+  };
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         if (userID !== null) {
@@ -27,6 +22,8 @@ export const Categories =({userID}) => {
             });
         }
       }, [userID]);
+      
+    
   return (
     <div className='Container'> 
       <div className='text'>
@@ -36,8 +33,10 @@ export const Categories =({userID}) => {
         <div className='text'>
         <ul>
         {categories.filter(category => category.userId === userID).map(category => (
-          <li key={category.categoryId}>{category.categoryname}
-       <NavigatCardButton/> 
+          <li key={category.Id}>{category.categoryname}
+       <button onClick={() => handleCategoryClick(category.Id)}>
+       <img alt='next' src={nextIcon} width={30} height={30} />
+            </button>
           </li>
            
           

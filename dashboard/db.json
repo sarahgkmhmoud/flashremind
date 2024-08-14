@@ -19,17 +19,19 @@
    
     "categories": [{
         "userId": 0,
-        "categoryId": 0,
+        "Id": 0,
         "categoryname":"Animals",
         "cards": [
             {
-                "cardId": 0,
+                "categoryId":0,
+                "Id": 0,
 
             "question":"Hope",
             "answer":"To wish for a particular event that one considers possible."
         },
         {
-            "cardId": 1,
+            "categoryId":0,
+            "Id": 1,
 
             "question":"Happenis",
             "answer":"To smile what ever you did."
@@ -38,18 +40,18 @@
     },
     {
         "userId": 0,
-        "categoryId": 1,
+        "Id": 1,
         "categoryname":"Ahmed",
         "cards": [
             {
-                "cardId": 0,
-
+                "categoryId":1,
+                "Id": 0,
             "question":"Hope",
             "answer":"To wish for a particular event that one considers possible."
         },
         {
-            "cardId": 1,
-
+            "categoryId":1,
+            "Id": 1,
             "question":"Happenis",
             "answer":"To smile what ever you did."
         }
@@ -57,17 +59,19 @@
     },
     {
         "userId": 1,
-        "categoryId": 2,
+        "Id": 0,
         "categoryname":"Hind",
         "cards": [
             {
-                "cardId": 0,
+                "categoryId":0,
+                "Id": 0,
 
             "question":"Hope",
             "answer":"To wish for a particular event that one considers possible."
         },
         {
-            "cardId": 1,
+            "categoryId":0,
+            "Id": 1,
 
             "question":"Happenis",
             "answer":"To smile what ever you did."
@@ -76,18 +80,19 @@
     },
     {
         "userId": 0,
-        "categoryId": 3,
+        "Id": 2,
         "categoryname":"Sarah",
         "cards": [
             {
-                "cardId": 0,
+                "categoryId":2,
+                "Id": 0,
 
             "question":"Hope",
             "answer":"To wish for a particular event that one considers possible."
         },
         {
-            "cardId": 1,
-
+            "categoryId":2,
+            "Id": 1,
             "question":"Happenis",
             "answer":"To smile what ever you did."
         }
