@@ -39,7 +39,7 @@ export const EditBox =() => {
   return (
     <div className='Container'> 
       <div className='return'>
-      <button onClick={handleCategoryClick}>
+      <button onClick={()=>handleCategoryClick(CategoryID)}>
       <img alt='next' src={returnIcon} width={50} height={31}/>
       </button>    
       </div>

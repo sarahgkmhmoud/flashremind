@@ -33,10 +33,16 @@ export const Categories =({userID}) => {
         <div className='text'>
         <ul>
         {categories.filter(category => category.userId === userID).map(category => (
-          <li key={category.Id}>{category.categoryname}
-       <button onClick={() => handleCategoryClick(category.Id)}>
+          <li className='inline' key={category.Id}>{category.categoryname}
+       <button className='inline' onClick={() => handleCategoryClick(category.Id)}>
        <img alt='next' src={nextIcon} width={30} height={30} />
             </button>
+            <div className='btn'>
+      
+      <button className='edit orange H inline' >Edit</button>  
+<button className='delete red'>Delete</button>
+ </div>
+ 
           </li>
            
           
@@ -44,6 +50,8 @@ export const Categories =({userID}) => {
           <button className='green' >
              Add+
              </button>
+      
+
       </ul>
             
             </div>

@@ -146,7 +146,9 @@ export const Card = () => {
         )}
       </div>
       <div className='btns'>
-      <button className='edit orange H' onClick={handleEditClick}>Edit</button>        <button className='delete red'>Delete</button>
+      <button className='edit orange H' onClick={handleEditClick}>Edit</button>  
+      <button className='delete red'>Delete</button>
+
         <ShareCard />
       </div>
     </div>
