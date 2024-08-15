@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from 'axios';
+import bcrypt from "bcryptjs";
 import usr_icon from "../../assets/user.png";
 import password_icon from "../../assets/password.png";
 import email_icon from "../../assets/email.png";
@@ -40,13 +42,23 @@ export const SignUpLogIn = () => {
 
     
     setErrors(validationErrors);
+    return Object.keys(validationErrors).length === 0;
 
+  };
+
+  const encryptPassword = async () => {
+    const salt = await bcrypt.genSalt(10);
+    return bcrypt.hash(formInputs.password, salt);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     validateInputs();
+
+    if (!validateInputs()) {
+      return; // Stop submission if validation fails
+    }
 
     if (authAction === "Create Account") {
       console.log("Signing up:", formInputs);
