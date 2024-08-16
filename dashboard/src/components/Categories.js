@@ -33,7 +33,9 @@ export const Categories =({userID}) => {
           await axios.delete(`http://localhost:3001/categories/${category.id}`);
 
           // Filter out the category you want to delete by its Id
-          const updatedCategories = categories.filter(category => category.Id !== categoryID);
+          const updatedCategories = categories.filter(category => category.Id !== categoryID)
+          // Create a new category object with the updated cards array
+         
           
           // Update the category list in the state
           setCategories(updatedCategories);

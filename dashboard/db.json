@@ -13,34 +13,5 @@
       "password": "123"
     }
   ],
-  "categories": [
-    {
-      "userId": 0,
-      "Id": 2,
-      "categoryname": "ddd",
-      "cards": [],
-      "id": "3a2b"
-    },
-    {
-      "userId": 0,
-      "Id": 3,
-      "categoryname": "Animals",
-      "cards": [],
-      "id": "d558"
-    },
-    {
-      "id": "6fd4",
-      "userId": 0,
-      "Id": 3,
-      "categoryname": "sarah",
-      "cards": []
-    },
-    {
-      "id": "e1c0",
-      "userId": 0,
-      "Id": 3,
-      "categoryname": "ddd",
-      "cards": []
-    }
-  ]
+  "categories": []
 }

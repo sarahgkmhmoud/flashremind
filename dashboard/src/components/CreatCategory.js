@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import '../../src/App.css';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid'; // Import UUID library
 
 export const Createcategory = () => {
   const navigate = useNavigate();
   const { userID } = useParams();
   const [values, setValues] = useState({
     userId: parseInt(userID),
-    Id: null,
+    Id: uuidv4(),
     categoryname: "",
     cards: [],
   });
@@ -20,7 +21,7 @@ export const Createcategory = () => {
         const categoryCount = response.data.length;
         setValues(prevValues => ({
           ...prevValues,
-          Id: categoryCount, // Assuming new category ID is based on the count of categories
+          Id: categoryCount + 1, // Assuming new category ID is based on the count of categories
         }));
       } catch (error) {
         console.error('Error fetching categories:', error);
