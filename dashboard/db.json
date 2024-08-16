@@ -16,35 +16,8 @@
   "categories": [
     {
       "userId": 0,
-      "Id": 0,
-      "categoryname": "Animals",
-      "cards": [
-        {
-          "Id": 0,
-          "question": "lklk",
-          "answer": "lklklk",
-          "categoryId": 0
-        },
-        {
-          "Id": 1,
-          "question": "ssss",
-          "answer": ";l;;;;;;;ss",
-          "categoryId": 0
-        }
-      ],
-      "id": "cd45"
-    },
-    {
-      "userId": 0,
-      "Id": 1,
-      "categoryname": "Animals",
-      "cards": [],
-      "id": "e945"
-    },
-    {
-      "userId": 0,
       "Id": 2,
-      "categoryname": "Animals",
+      "categoryname": "ddd",
       "cards": [],
       "id": "3a2b"
     },
@@ -54,6 +27,20 @@
       "categoryname": "Animals",
       "cards": [],
       "id": "d558"
+    },
+    {
+      "id": "6fd4",
+      "userId": 0,
+      "Id": 3,
+      "categoryname": "sarah",
+      "cards": []
+    },
+    {
+      "id": "e1c0",
+      "userId": 0,
+      "Id": 3,
+      "categoryname": "ddd",
+      "cards": []
     }
   ]
 }

@@ -1,12 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../src/App.css';
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const Createcategory = () => {
-  
+  const navigate = useNavigate();
+  const { userID } = useParams();
+  const [values, setValues] = useState({
+    userId: parseInt(userID),
+    Id: null,
+    categoryname: "",
+    cards: [],
+  });
+
+  useEffect(() => {
+    const fetchCategoryCount = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/categories`);
+        const categoryCount = response.data.length;
+        setValues(prevValues => ({
+          ...prevValues,
+          Id: categoryCount, // Assuming new category ID is based on the count of categories
+        }));
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategoryCount();
+  }, [userID]);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setValues(prevValues => ({
+      ...prevValues,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const newCategory = {
+        ...values,
+      };
+
+      // Add the new category to the backend
+      await axios.post('http://localhost:3001/categories', newCategory);
+
+      // Navigate back to the cards view
+      navigate(`/card/${userID}/${newCategory.Id}`);
+    } catch (error) {
+      console.error('Error creating category:', error);
+    }
+  };
 
   return (
     <div className='Container'>
-      <div className='return'></div>
       <div className='text'>
         <h3>Create a New Category</h3>
       </div>
@@ -15,13 +63,14 @@ export const Createcategory = () => {
           <input
             className='fitQuestion'
             type='text'
-            name='question'
-            placeholder='Put your name'
+            name='categoryname'
+            placeholder="Enter category name"
+            value={values.categoryname}
+            onChange={handleInputChange}
           />
-        
         </div>
         <div className='btns'>
-          <button className='save orange H' >Save</button>
+          <button className='save orange H' onClick={handleSubmit}>Save</button>
         </div>
       </div>
     </div>

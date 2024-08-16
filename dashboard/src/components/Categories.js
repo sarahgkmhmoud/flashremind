@@ -27,7 +27,23 @@ export const Categories =({userID}) => {
             });
         }
       }, [userID]);
-      
+      const deleteCategory = async (categoryID) => {
+        try {
+          const category = categories.find(category => category.Id === categoryID)
+          await axios.delete(`http://localhost:3001/categories/${category.id}`);
+
+          // Filter out the category you want to delete by its Id
+          const updatedCategories = categories.filter(category => category.Id !== categoryID);
+          
+          // Update the category list in the state
+          setCategories(updatedCategories);
+    
+          // Delete the category from the backend
+          console.log('Category deleted successfully');
+        } catch (error) {
+          console.error('Error deleting category:', error);
+        }
+      };
     
   return (
     <div className='Container'> 
@@ -45,7 +61,7 @@ export const Categories =({userID}) => {
             <div className='btn'>
       
       <button className='edit orange H inline' onClick={()=>handleEditcategory(category.Id)} >Edit</button>  
-<button className='delete red'>Delete</button>
+<button className='delete red' onClick={()=>deleteCategory(category.Id)}>Delete</button>
  </div>
  
           </li>
