@@ -141,3 +141,18 @@ button.turngray {
     background: lightgray;
     color: gray;
 }
+
+.input input.error {
+    border-color: var(--color-red);
+  }
+  
+
+.error {
+    color: var(--color-red);
+    font-size: 12px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+    opacity: 1;
+  }
