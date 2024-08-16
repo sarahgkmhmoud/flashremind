@@ -64,9 +64,25 @@ export const SignUpLogIn = () => {
 
 
 //handling signup
-    const handleSignUp = () => {
-      const hashedPassword = hashPassword();
+const handleSignUp = () => {
+  const hashedPassword = hashPassword();
 
+  const usersUrl = "http://localhost:3001/userData";
+  axios.get(usersUrl)
+    .then((response) => {
+      const users = response.data;
+      const user = users.find(user => user.email === formInputs.email);
+
+      // Check if the email is already registered
+      if (user) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "This email is already registered.",
+        }));
+        return;
+      }
+
+      // If the email is not registered, proceed with signup
       const newUser = {
         id: uuidv4(),
         userName: formInputs.name,
@@ -74,12 +90,12 @@ export const SignUpLogIn = () => {
         password: hashedPassword,
       };
 
-      const usersUrl =
-        "http://localhost:3001/userData";
       axios.post(usersUrl, newUser)
         .then((response) => console.log("Signup successful:", response.data))
         .catch((err) => console.error("Signup error:", err));
-    };
+    })
+    .catch((err) => console.error("Error fetching users:", err));
+};
 
 //handling login 
     const handleLogIn = () => {
