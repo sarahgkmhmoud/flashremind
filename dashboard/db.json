@@ -1,46 +1,17 @@
-
-
-   {
-    "userData":[
-        {
-            "id": 0,
-        "userName":"sarah",
-        "email": "sarahgad91@gmail.com",
-        "password":"123"
+{
+  "userData": [
+    {
+      "id": "0",
+      "userName": "sarah",
+      "email": "sarahgad91@gmail.com",
+      "password": "123"
     },
     {
-        "id": 0,
-    "userName":"sarah",
-    "email": "sarahgad91@gmail.com",
-    "password":"123"
-} 
-],
-
-   
-    "categories": [{
-        "userId": 0,
-        "categoryId": 0,
-        "categoryname":"Animals",
-        "cards": [
-            {
-                "cardId": 0,
-
-            "question":"Hope",
-            "answer":"To wish for a particular event that one considers possible."
-        },
-        {
-            "cardId": 1,
-
-            "question":"Happenis",
-            "answer":"To smile what ever you did."
-        }
-    ]          
+      "id": "1",
+      "userName": "Manar",
+      "email": "manarElsaid@gmail.com",
+      "password": "123"
     }
-]
+  ],
+  "categories": []
 }
-
-
-    
-
-
-
