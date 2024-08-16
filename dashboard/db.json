@@ -1,108 +1,59 @@
-
-
-   {
-    "userData":[
-        {
-            "id": 0,
-        "userName":"sarah",
-        "email": "sarahgad91@gmail.com",
-        "password":"123"
+{
+  "userData": [
+    {
+      "id": "0",
+      "userName": "sarah",
+      "email": "sarahgad91@gmail.com",
+      "password": "123"
     },
     {
-        "id": 1,
-    "userName":"sarah",
-    "email": "sarahgad91@gmail.com",
-    "password":"123"
-} 
-],
-
-   
-    "categories": [{
-        "userId": 0,
-        "Id": 0,
-        "categoryname":"Animals",
-        "cards": [
-            {
-                "categoryId":0,
-                "Id": 0,
-
-            "question":"Hope",
-            "answer":"To wish for a particular event that one considers possible."
-        },
-        {
-            "categoryId":0,
-            "Id": 1,
-
-            "question":"Happenis",
-            "answer":"To smile what ever you did."
-        }
-    ]          
-    },
-    {
-        "userId": 0,
-        "Id": 1,
-        "categoryname":"Ahmed",
-        "cards": [
-            {
-                "categoryId":1,
-                "Id": 0,
-            "question":"Hope",
-            "answer":"To wish for a particular event that one considers possible."
-        },
-        {
-            "categoryId":1,
-            "Id": 1,
-            "question":"Happenis",
-            "answer":"To smile what ever you did."
-        }
-    ]          
-    },
-    {
-        "userId": 1,
-        "Id": 0,
-        "categoryname":"Hind",
-        "cards": [
-            {
-                "categoryId":0,
-                "Id": 0,
-
-            "question":"Hope",
-            "answer":"To wish for a particular event that one considers possible."
-        },
-        {
-            "categoryId":0,
-            "Id": 1,
-
-            "question":"Happenis",
-            "answer":"To smile what ever you did."
-        }
-    ]          
-    },
-    {
-        "userId": 0,
-        "Id": 2,
-        "categoryname":"Sarah",
-        "cards": [
-            {
-                "categoryId":2,
-                "Id": 0,
-
-            "question":"Hope",
-            "answer":"To wish for a particular event that one considers possible."
-        },
-        {
-            "categoryId":2,
-            "Id": 1,
-            "question":"Happenis",
-            "answer":"To smile what ever you did."
-        }
-    ]          
+      "id": "1",
+      "userName": "Manar",
+      "email": "manarElsaid@gmail.com",
+      "password": "123"
     }
-]
+  ],
+  "categories": [
+    {
+      "userId": 0,
+      "Id": 0,
+      "categoryname": "Animals",
+      "cards": [
+        {
+          "Id": 0,
+          "question": "lklk",
+          "answer": "lklklk",
+          "categoryId": 0
+        },
+        {
+          "Id": 1,
+          "question": "ssss",
+          "answer": ";l;;;;;;;ss",
+          "categoryId": 0
+        }
+      ],
+      "id": "cd45"
+    },
+    {
+      "userId": 0,
+      "Id": 1,
+      "categoryname": "Animals",
+      "cards": [],
+      "id": "e945"
+    },
+    {
+      "userId": 0,
+      "Id": 2,
+      "categoryname": "Animals",
+      "cards": [],
+      "id": "3a2b"
+    },
+    {
+      "userId": 0,
+      "Id": 3,
+      "categoryname": "Animals",
+      "cards": [],
+      "id": "d558"
+    }
+  ]
 }
-
-
-    
-
-
-

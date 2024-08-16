@@ -28,33 +28,6 @@ export const ShareCard = () => {
 
 
 
-export function NavigatcreateButton() {
-  const navigate = useNavigate(); // Hook to navigate programmatically
-
-  const goToCreate = () => {
-    navigate('/Createcard');
-  }; // Navigate to the "CreateCard" component
-
-  return (
-    <button className='green' onClick={goToCreate}>
-      Add+
-    </button>
-  );
-}
-
-export function NavigatReturnButton() {
-  const navigate = useNavigate(); // Hook to navigate programmatically
-
-  const goToReturn = () => {
-    navigate('/Categories');
-  }; // Navigate to the "CreateCard" component
-
-  return (
-    <button onClick={goToReturn}>
-    <img alt='next' src={returnIcon} width={50} height={31} />
-  </button>
-  );
-}
 
 export const Card = () => {
   const { userID, CategoryID } = useParams(); // Use useParams to get route parameters
@@ -64,9 +37,16 @@ export const Card = () => {
   const [categoryName, setCategoryName] = useState('');
   const [index, setIndex] = useState(0);
   const [isVisible, setVisible] = useState(false);
+  const [category, setCategory] = useState(null);
   const navigate = useNavigate();
   const handleEditClick = () => {
     navigate(`/card/edit/${userID}/${CategoryID}/${index}`);
+  };
+  const goToReturn = () => {
+    navigate(`/Categories/${userID}`);
+  };
+  const goToCreate = () => {
+    navigate(`/Createcard/${userID}/${CategoryID}`);
   };
   useEffect(() => {
     if (userID !== null) {
@@ -79,6 +59,7 @@ export const Card = () => {
 
           if (category) {
             setCards(category.cards);
+            setCategory(category)
             console.log('cards after set:', category.cards); // Debugging line
 
             setCategoryName(category.categoryname);
@@ -91,6 +72,35 @@ export const Card = () => {
         });
     }
   }, [userID, CategoryID]);
+  const deleteCard = async (cardId) => {
+    if (category) {
+      try {
+        // Filter out the card you want to delete by its Id
+        const updatedCards = category.cards.filter(card => card.Id !== cardId).map((card,index) => card.Id = index)
+        // Create a new category object with the updated cards array
+        const updatedCategory = {
+          ...category,
+          cards: updatedCards,
+        };
+  
+        // Update the category in the backend
+        const response = await axios.put(`http://localhost:3001/categories/${category.id}`, updatedCategory);
+        console.log('Card deleted and category updated:', response.data);
+        if(index !== 0){
+        handlePrevClick()
+        }
+        else{
+          goToReturn()
+        }
+        // Update the local state to reflect the changes
+        setCategory(updatedCategory);
+      } catch (error) {
+        console.error('Error deleting card:', error);
+      }
+    } else {
+      console.error('Category is not defined');
+    }
+  };
 
   const toggleAnswer = () => {
     setVisible(!isVisible);
@@ -115,9 +125,13 @@ export const Card = () => {
   return (
     <div className='Container'>
       <div className='return'>
-        < NavigatReturnButton/>
-        <NavigatcreateButton />
-      </div>
+      <button onClick={goToReturn}>
+    <img alt='next' src={returnIcon} width={50} height={31} />
+  </button> 
+  <button className='green' onClick={goToCreate}>
+      Add+
+    </button>   
+       </div>
       <div className='text'>
         <h3>{categoryName}</h3>
       </div>
@@ -147,7 +161,7 @@ export const Card = () => {
       </div>
       <div className='btns'>
       <button className='edit orange H' onClick={handleEditClick}>Edit</button>  
-      <button className='delete red'>Delete</button>
+      <button className='delete red' onClick={()=>deleteCard(cards[index].Id)}>Delete</button>
 
         <ShareCard />
       </div>

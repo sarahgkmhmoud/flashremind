@@ -2,14 +2,19 @@ import React, {useState, useEffect} from 'react'
 import '../../src/App.css'
 import axios from 'axios';
 import nextIcon from '../assets/next.png';
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
   
 export const Categories =({userID}) => {
   const navigate = useNavigate();
-
   const handleCategoryClick = (CategoryID) => {
     navigate(`/card/${userID}/${CategoryID}`);
   };
+  const handleAddcategory = ()=> {
+    navigate(`/Createcategory/${userID}`)
+  }
+  const handleEditcategory = (CategoryID)=> {
+    navigate(`/Categories/edit/${userID}/${CategoryID}`)
+  }
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         if (userID !== null) {
@@ -33,13 +38,13 @@ export const Categories =({userID}) => {
         <div className='text'>
         <ul>
         {categories.filter(category => category.userId === userID).map(category => (
-          <li className='inline' key={category.Id}>{category.categoryname}
+          <li className='inline' key={category.id}>{category.categoryname}
        <button className='inline' onClick={() => handleCategoryClick(category.Id)}>
        <img alt='next' src={nextIcon} width={30} height={30} />
             </button>
             <div className='btn'>
       
-      <button className='edit orange H inline' >Edit</button>  
+      <button className='edit orange H inline' onClick={()=>handleEditcategory(category.Id)} >Edit</button>  
 <button className='delete red'>Delete</button>
  </div>
  
@@ -47,7 +52,7 @@ export const Categories =({userID}) => {
            
           
         ))}
-          <button className='green' >
+          <button className='green' onClick={handleAddcategory} >
              Add+
              </button>
       
