@@ -19,7 +19,7 @@ function App() {
         <Route path="/card/edit/:userID/:CategoryID/:index" element={<EditBox />} />    
           <Route path="/card/:userID/:CategoryID" element={<Card />}/>
           <Route path="/Createcard/:userID/:CategoryID" element={<Createcard />} />
-          <Route path="/signup" element={    <SignUpLogIn />} />
+          <Route path="/" element={    <SignUpLogIn />} />
           <Route path= "/Categories/:userID" element={<Categories userID={0}/>}/>
           <Route path="Createcategory/:userID" element={<Createcategory/>}/>
           <Route path="/Categories/edit/:userID/:CategoryID" element={<EditCategory/>}/>

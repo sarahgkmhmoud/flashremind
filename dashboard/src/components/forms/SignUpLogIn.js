@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import usr_icon from "../../assets/user.png";
 import password_icon from "../../assets/password.png";
 import email_icon from "../../assets/email.png";
+import { useNavigate } from "react-router-dom";
 import "./form.css";
 
 export const SignUpLogIn = () => {
@@ -15,6 +16,7 @@ export const SignUpLogIn = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate()
 
   const [errors, setErrors] = useState({});
 
@@ -64,7 +66,7 @@ export const SignUpLogIn = () => {
 
 
 //handling signup
-const handleSignUp = () => {
+const HandleSignUp = () => {
   const hashedPassword = hashPassword();
 
   const usersUrl = "http://localhost:3001/userData";
@@ -93,8 +95,11 @@ const handleSignUp = () => {
       axios.post(usersUrl, newUser)
         .then((response) => console.log("Signup successful:", response.data))
         .catch((err) => console.error("Signup error:", err));
+        navigate(`/Categories/${response.data.id}`);
     })
     .catch((err) => console.error("Error fetching users:", err));
+
+
 };
 
 //handling login 
@@ -123,6 +128,8 @@ const handleSignUp = () => {
             setErrors((prevErrors) => ({ ...prevErrors, password: "Incorrect password." }));
             return;
           }
+          navigate(`/Categories/${user.id}`);
+
         })
         .catch((err) => console.error("Error fetching users:", err));
     };
@@ -136,11 +143,12 @@ const handleSignUp = () => {
       }
     if (authAction === "Create Account") {
       console.log("Signing up:", formInputs);
-      handleSignUp();
+      HandleSignUp();
     } else {
       console.log("Logging in:", formInputs);
       handleLogIn();
     }
+
   };
 
 
