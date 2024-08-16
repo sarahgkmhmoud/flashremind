@@ -48,7 +48,7 @@ export const Createcategory = () => {
       await axios.post('http://localhost:3001/categories', newCategory);
 
       // Navigate back to the cards view
-      navigate(`/card/${userID}/${newCategory.Id}`);
+      navigate(`/Createcard/${userID}/${newCategory.Id}`);
     } catch (error) {
       console.error('Error creating category:', error);
     }
