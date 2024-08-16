@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import bcrypt from "bcryptjs";
+import axios from "axios";
+import CryptoJS from "crypto-js";
+import { v4 as uuidv4 } from "uuid";
 import usr_icon from "../../assets/user.png";
 import password_icon from "../../assets/password.png";
 import email_icon from "../../assets/email.png";
@@ -17,62 +18,115 @@ export const SignUpLogIn = () => {
 
   const [errors, setErrors] = useState({});
 
+  //switching between login and signup
+  const switchForm = () => {
+    setAuthAction(authAction === "Create Account" ? "Login" : "Create Account");
+    setFormInput({ name: "", email: "", password: "" });
+    setErrors({});
+  };
+
+//function to check validation for input fields
   const validateInputs = () => {
     const validationErrors = {};
     const nameRegex = /^[a-zA-Z][a-zA-Z0-9-_]{3,16}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!formInputs.name.trim()){
-      validationErrors.name = "username is required";
-    } else if(!nameRegex.test(formInputs.name)){
-      validationErrors.name = "Please enter a valid name (3-16 characters, letters and numbers only).";
+    if (authAction === "Create Account") {
+      if (!formInputs.name.trim()) {
+        validationErrors.name = "username is required";
+      } else if (!nameRegex.test(formInputs.name)) {
+        validationErrors.name =
+          "Please enter a valid name (3-16 characters, letters and numbers only).";
+      }
     }
-
-    if(!formInputs.email.trim()){
+    
+    if (!formInputs.email.trim()) {
       validationErrors.email = "email is required";
-    } else if(!emailRegex.test(formInputs.email)){
+    } else if (!emailRegex.test(formInputs.email)) {
       validationErrors.email = "please enter a valid email";
     }
 
-    if(!formInputs.password.trim()){
+    if (!formInputs.password.trim()) {
       validationErrors.password = "password is required";
-    } else if(formInputs.password.length < 8){
-      validationErrors.password = "Password must be at least 8 characters long.";
+    } else if (formInputs.password.length < 8) {
+      validationErrors.password =
+        "Password must be at least 8 characters long.";
     }
 
-    
     setErrors(validationErrors);
     return Object.keys(validationErrors).length === 0;
-
   };
 
-  const encryptPassword = async () => {
-    const salt = await bcrypt.genSalt(10);
-    return bcrypt.hash(formInputs.password, salt);
+//hashing the password before storing in json file and during login
+  const hashPassword = () => {
+    return CryptoJS.SHA256(formInputs.password).toString();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    validateInputs();
+//handling signup
+    const handleSignUp = () => {
+      const hashedPassword = hashPassword();
 
-    if (!validateInputs()) {
-      return; // Stop submission if validation fails
-    }
+      const newUser = {
+        id: uuidv4(),
+        userName: formInputs.name,
+        email: formInputs.email,
+        password: hashedPassword,
+      };
 
+      const usersUrl =
+        "http://localhost:3001/userData";
+      axios.post(usersUrl, newUser)
+        .then((response) => console.log("Signup successful:", response.data))
+        .catch((err) => console.error("Signup error:", err));
+    };
+
+//handling login 
+    const handleLogIn = () => {
+      const hashedPassword = hashPassword();
+
+      const usersUrl =
+        "http://localhost:3001/userData";
+      axios.get(usersUrl)
+        .then((response) => {
+          const users = response.data;
+          const user = users.find(user => user.email === formInputs.email);
+
+        //checks if user exists
+          if (!user) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              email: "User does not exist.",
+            }));
+            return;
+          }
+
+        //checks if user entered the correct password
+          if (user.password !== hashedPassword) {
+            console.log("Incorrect password.");
+            setErrors((prevErrors) => ({ ...prevErrors, password: "Incorrect password." }));
+            return;
+          }
+        })
+        .catch((err) => console.error("Error fetching users:", err));
+    };
+
+    //handling submit 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+  
+      if (!validateInputs()) {
+        return;
+      }
     if (authAction === "Create Account") {
       console.log("Signing up:", formInputs);
-      // Handle signup logic here
+      handleSignUp();
     } else {
       console.log("Logging in:", formInputs);
-      // Handle login logic here
+      handleLogIn();
     }
   };
 
-  const switchForm = () => {
-    setAuthAction(authAction === "Create Account" ? "Login" : "Create Account");
-    setFormInput({ name: "", email: "", password: "" });
-  };
 
   return (
     <div className="Container">
@@ -92,8 +146,7 @@ export const SignUpLogIn = () => {
                 setFormInput({ ...formInputs, name: e.target.value });
               }}
             />
-            {errors.name && <span className='error'>{errors.name}</span>
-            }
+            {errors.name && <span className="error">{errors.name}</span>}
           </div>
         )}
 
@@ -107,7 +160,7 @@ export const SignUpLogIn = () => {
               setFormInput({ ...formInputs, email: e.target.value });
             }}
           />
-          {errors.email && <span className='error'>{errors.email}</span>}
+          {errors.email && <span className="error">{errors.email}</span>}
         </div>
 
         <div className="input">
@@ -120,7 +173,7 @@ export const SignUpLogIn = () => {
               setFormInput({ ...formInputs, password: e.target.value });
             }}
           />
-          {errors.password && <span className='error'>{errors.password}</span>}
+          {errors.password && <span className="error">{errors.password}</span>}
         </div>
 
         <div className="submit-buttons">
