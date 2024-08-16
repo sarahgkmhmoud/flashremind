@@ -8,7 +8,7 @@ export const Createcategory = () => {
   const navigate = useNavigate();
   const { userID } = useParams();
   const [values, setValues] = useState({
-    userId: parseInt(userID),
+    userId: userID,  // Fallback to null if undefined
     Id: uuidv4(),
     categoryname: "",
     cards: [],

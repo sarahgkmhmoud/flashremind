@@ -54,7 +54,7 @@ export const Card = () => {
         .then(response => {
           console.log('API Response:', response.data); // Debugging line
 
-          const category = response.data.find(category => category.userId === parseInt(userID) && category.Id === parseInt(CategoryID));
+          const category = response.data.find(category => category.userId === userID && category.Id === parseInt(CategoryID));
           console.log('category before set:', category); // Debugging line
 
           if (category) {

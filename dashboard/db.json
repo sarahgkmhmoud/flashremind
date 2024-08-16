@@ -1,11 +1,83 @@
 {
   "userData": [
     {
-      "id": "a2bf0b49-1954-45ee-b35f-59a4c87662dd",
+      "id": "465cd698-daf7-4270-be08-94a950d0088d",
+      "userName": "manar",
+      "email": "manarelsaid@gmail.com",
+      "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
+    },
+    {
+      "id": "b02d11c4-2287-4e3e-99bc-4f69d0bbac2c",
       "userName": "sarah",
       "email": "sarahgad91@gmail.com",
       "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
+    },
+    {
+      "id": "e2853b97-d233-4da4-a1c5-5472a42d279c",
+      "userName": "ahmed",
+      "email": "sarahgadelkareem@gmail.com",
+      "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225"
+    },
+    {
+      "id": "ef1d9847-2e94-474e-a366-cadd7f38ffce",
+      "userName": "amina",
+      "email": "amina@gmail.com",
+      "password": "d142e42d0f7c46af12c43937e4215891ee7663d480927b567dfd7633b52728b2"
+    },
+    {
+      "id": "e8314b60-e21f-459b-befd-f3180a8bd940",
+      "userName": "madeha",
+      "email": "madeha@gmail.com",
+      "password": "1c0ff670a2145da6d1513cbe5502bba3e98b375ae9205a9d5d60d81dd8e427fb"
     }
   ],
-  "categories": []
+  "categories": [
+    {
+      "id": "f89e",
+      "userId": "465cd698-daf7-4270-be08-94a950d0088d",
+      "Id": 1,
+      "categoryname": "Animals",
+      "cards": [
+        {
+          "Id": 0,
+          "question": "cat",
+          "answer": "meow meow",
+          "categoryId": 1
+        },
+        {
+          "Id": 1,
+          "question": "dog",
+          "answer": "ho",
+          "categoryId": 1
+        }
+      ]
+    },
+    {
+      "id": "5c77",
+      "userId": "b02d11c4-2287-4e3e-99bc-4f69d0bbac2c",
+      "Id": 2,
+      "categoryname": "Flowers",
+      "cards": [
+        {
+          "Id": 0,
+          "question": "Balady",
+          "answer": "Red",
+          "categoryId": 2
+        },
+        {
+          "Id": 1,
+          "question": "loutus",
+          "answer": "white",
+          "categoryId": 2
+        }
+      ]
+    },
+    {
+      "id": "c29a",
+      "userId": "e2853b97-d233-4da4-a1c5-5472a42d279c",
+      "Id": 3,
+      "categoryname": "k",
+      "cards": []
+    }
+  ]
 }

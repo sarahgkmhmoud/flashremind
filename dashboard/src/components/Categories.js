@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import '../../src/App.css'
 import axios from 'axios';
 import nextIcon from '../assets/next.png';
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
   
-export const Categories =({userID}) => {
+export const Categories =() => {
+  const{userID} = useParams()
   const navigate = useNavigate();
   const handleCategoryClick = (CategoryID) => {
     navigate(`/card/${userID}/${CategoryID}`);

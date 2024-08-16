@@ -31,7 +31,7 @@ export const EditCategory = () => {
           console.log("API response data:", response.data); // Log the response data
           const category = response.data.find(
             (category) =>
-              category.userId === parseInt(userID) &&
+              category.userId ===userID&&
               category.Id === parseInt(CategoryID)
           );
           console.log("category before set:", category); // Debugging line

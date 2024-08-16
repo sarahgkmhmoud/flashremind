@@ -10,9 +10,10 @@ import "./form.css";
 
 export const SignUpLogIn = () => {
   const [authAction, setAuthAction] = useState("Create Account");
+  const [users, setusers] = useState([]);
 
   const [formInputs, setFormInput] = useState({
-    name: "",
+    userName: "",
     email: "",
     password: "",
   });
@@ -23,7 +24,7 @@ export const SignUpLogIn = () => {
   //switching between login and signup
   const switchForm = () => {
     setAuthAction(authAction === "Create Account" ? "Login" : "Create Account");
-    setFormInput({ name: "", email: "", password: "" });
+    setFormInput({ userName: "", email: "", password: "" });
     setErrors({});
   };
 
@@ -34,10 +35,10 @@ export const SignUpLogIn = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (authAction === "Create Account") {
-      if (!formInputs.name.trim()) {
-        validationErrors.name = "username is required";
+      if (!formInputs.userName.trim()) {
+        validationErrors.userName = "username is required";
       } else if (!nameRegex.test(formInputs.name)) {
-        validationErrors.name =
+        validationErrors.userName =
           "Please enter a valid name (3-16 characters, letters and numbers only).";
       }
     }
@@ -72,7 +73,7 @@ const HandleSignUp = () => {
   const usersUrl = "http://localhost:3001/userData";
   axios.get(usersUrl)
     .then((response) => {
-      const users = response.data;
+      setusers(response.data) ;
       const user = users.find(user => user.email === formInputs.email);
 
       // Check if the email is already registered
@@ -83,11 +84,11 @@ const HandleSignUp = () => {
         }));
         return;
       }
-
+      const newUserId = uuidv4(); 
       // If the email is not registered, proceed with signup
       const newUser = {
-        id: uuidv4(),
-        userName: formInputs.name,
+        id: newUserId,
+        userName: formInputs.userName,
         email: formInputs.email,
         password: hashedPassword,
       };
@@ -95,7 +96,8 @@ const HandleSignUp = () => {
       axios.post(usersUrl, newUser)
         .then((response) => console.log("Signup successful:", response.data))
         .catch((err) => console.error("Signup error:", err));
-        navigate(`/Categories/${response.data.id}`);
+        navigate(`/Createcategory/${newUserId}`);
+
     })
     .catch((err) => console.error("Error fetching users:", err));
 
@@ -110,9 +112,9 @@ const HandleSignUp = () => {
         "http://localhost:3001/userData";
       axios.get(usersUrl)
         .then((response) => {
-          const users = response.data;
+         const users = (response.data);
           const user = users.find(user => user.email === formInputs.email);
-
+          navigate(`/Categories/${user.id}`);
         //checks if user exists
           if (!user) {
             setErrors((prevErrors) => ({
@@ -128,7 +130,6 @@ const HandleSignUp = () => {
             setErrors((prevErrors) => ({ ...prevErrors, password: "Incorrect password." }));
             return;
           }
-          navigate(`/Categories/${user.id}`);
 
         })
         .catch((err) => console.error("Error fetching users:", err));
@@ -150,6 +151,13 @@ const HandleSignUp = () => {
     }
 
   };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput(prevInputs => ({
+      ...prevInputs,
+      [name]: value
+    }));
+  };
 
 
   return (
@@ -164,11 +172,10 @@ const HandleSignUp = () => {
             <img src={usr_icon} alt="" />
             <input
               type="text"
+              name="userName"
               placeholder="Full Name"
-              value={formInputs.name}
-              onChange={(e) => {
-                setFormInput({ ...formInputs, name: e.target.value });
-              }}
+              value={formInputs.userName}
+              onChange={handleInputChange}
             />
             {errors.name && <span className="error">{errors.name}</span>}
           </div>
@@ -177,12 +184,11 @@ const HandleSignUp = () => {
         <div className="input">
           <img src={email_icon} alt="" />
           <input
-            type="email"
-            placeholder="Email"
-            value={formInputs.email}
-            onChange={(e) => {
-              setFormInput({ ...formInputs, email: e.target.value });
-            }}
+             type="email"
+             name="email"
+             placeholder="Email"
+             value={formInputs.email}
+             onChange={handleInputChange}
           />
           {errors.email && <span className="error">{errors.email}</span>}
         </div>
@@ -190,12 +196,11 @@ const HandleSignUp = () => {
         <div className="input">
           <img src={password_icon} alt="" />
           <input
-            type="password"
-            placeholder="Password"
-            value={formInputs.password}
-            onChange={(e) => {
-              setFormInput({ ...formInputs, password: e.target.value });
-            }}
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formInputs.password}
+              onChange={handleInputChange}
           />
           {errors.password && <span className="error">{errors.password}</span>}
         </div>
