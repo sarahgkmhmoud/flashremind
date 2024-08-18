@@ -27,7 +27,7 @@
 
 // // // //   }
 // // // //   return (
-// // // //     <div className='Container'> 
+// // // //     <div className='Container'>
 // // // //     <div className='return'>
 // // // //     </div>
 // // // //     <div className='text'>
@@ -36,16 +36,16 @@
 // // // //     <div className='Cardbox'>
 // // // //       <div className='Question text'>
 // // // //           <input className=' fitQuestion' type='text' placeholder='put your word' onChange={handleChange}>
-           
+
 // // // //               </input>
 // // // //               </div>
 // // // //       <div className='text'>
-// // // //           <p className='inline'>Answer</p>    
+// // // //           <p className='inline'>Answer</p>
 // // // //           <img  alt='discover' src={discoverIcon} width={19.94} height={15.97}/>
 // // // //         <div className='boxAnswer'>
 // // // //           <textarea className='boxAnswer' placeholder='The answer is' onChange={handleChange}/>
 // // // //           </div>
-// // // //         </div>       
+// // // //         </div>
 // // // //         <div className='btns'>
 // // // //           {/* <button className='share green'>Share</button> */}
 // // // //           <button className='save orange H' onClick={handlesubmit}>Save</button>
@@ -57,7 +57,7 @@
 // // // //           <img alt='next' src={nextIcon} width={30} height={30}/>
 // // // //           </div> */}
 // // // //         </div>
-        
+
 // // // //     </div>
 // // // // )
 // // // // }
@@ -90,8 +90,6 @@
 // // //       .then(res => console.log(res))
 // // //       .catch(err => console.log(err));
 // // //   };
-
-  
 
 // // export const Createcard = () => {
 // //   const { userID, CategoryID } = useParams(); // Get userID and categoryID from URL params
@@ -265,13 +263,13 @@
 //           question: values.question,
 //           answer: values.answer,
 //         };
-  
+
 //         // Add the new card to the existing cards array
 //         const updatedCategory = {
 //           ...category,
 //           cards: [...category.cards, newCard],
 //         };
-  
+
 //         // Update the category in the backend
 //         const response = await axios.put(`http://localhost:3001/categories/${category.id}`, updatedCategory);
 
@@ -285,7 +283,6 @@
 //       console.error('Category is not defined');
 //     }
 //   };
-  
 
 //   return (
 //     <div className='Container'>
@@ -322,17 +319,17 @@
 //     </div>
 //   );
 // };
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 
 export const Createcard = () => {
   const navigate = useNavigate();
   const { userID, CategoryID } = useParams();
   const [category, setCategory] = useState(null);
   const [values, setValues] = useState({
-    question: '',
-    answer: '',
+    question: "",
+    answer: "",
     Id: null,
     categoryId: null,
   });
@@ -342,21 +339,21 @@ export const Createcard = () => {
       try {
         const response = await axios.get(`http://localhost:3001/categories`);
         const fetchedCategory = response.data.find(
-          cat => cat.Id === parseInt(CategoryID)
+          (cat) => cat.Id === parseInt(CategoryID),
         );
 
         if (fetchedCategory) {
           setCategory(fetchedCategory);
-          setValues(prevValues => ({
+          setValues((prevValues) => ({
             ...prevValues,
             Id: fetchedCategory.cards.length, // Assuming new card ID is based on the length of cards
-            categoryId: parseInt(CategoryID)
+            categoryId: parseInt(CategoryID),
           }));
         } else {
-          console.error('Category not found');
+          console.error("Category not found");
         }
       } catch (error) {
-        console.error('Error fetching category:', error);
+        console.error("Error fetching category:", error);
       }
     };
 
@@ -365,9 +362,9 @@ export const Createcard = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setValues(prevValues => ({
+    setValues((prevValues) => ({
       ...prevValues,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -386,45 +383,50 @@ export const Createcard = () => {
           cards: [...category.cards, newCard],
         };
 
-        await axios.put(`http://localhost:3001/categories/${category.id}`, updatedCategory);
+        await axios.put(
+          `http://localhost:3001/categories/${category.id}`,
+          updatedCategory,
+        );
         navigate(`/card/${userID}/${CategoryID}`); // Navigate back to the cards view
       } catch (error) {
-        console.error('Error updating category:', error);
+        console.error("Error updating category:", error);
       }
     } else {
-      console.error('Category is not defined');
+      console.error("Category is not defined");
     }
   };
 
   return (
-    <div className='Container'>
-      <div className='return'></div>
-      <div className='text'>
-        <h3>Create a New Card</h3>
+    <div className="Container">
+      <div className="return"></div>
+      <div className="text">
+        <h3>Create A New Card</h3>
       </div>
-      <div className='Cardbox'>
-        <div className='Question text'>
+      <div className="Cardbox">
+        <div className="Question text">
           <input
-            className='fitQuestion'
-            type='text'
-            name='question'
-            placeholder='Put your word'
+            className="fitQuestion"
+            type="text"
+            name="question"
+            placeholder="Put your word"
             onChange={handleInputChange}
           />
         </div>
-        <div className='text'>
-          <p className='inline'>Answer</p>
-          <div className='boxAnswer'>
-            <textarea
-              className='boxAnswer'
-              name='answer'
-              placeholder='The answer is'
-              onChange={handleInputChange}
-            />
-          </div>
+        <div className="text">
+          <p className="inline">Answer</p>
         </div>
-        <div className='btns'>
-          <button className='save orange H' onClick={handleSubmit}>Save</button>
+        <div className="boxAnswerContainer">
+          <textarea
+            className="boxAnswer"
+            name="answer"
+            placeholder="The answer is"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="btns">
+          <button className="save orange H" onClick={handleSubmit}>
+            Save
+          </button>
         </div>
       </div>
     </div>
