@@ -134,7 +134,10 @@ h6 {
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
     max-height: 150px;
 }
+.transition {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 
+}
 .fitQuestion {
     width: 90%;
     border: none;
@@ -199,11 +202,12 @@ textarea.boxAnswer {
 }
 
 .visible {
-    visibility: visible;
-}
+    opacity: 1;
+    transform: translateX(0);}
 
 .hidden {
-    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-100%);
 }
 
 
@@ -221,6 +225,12 @@ textarea.boxAnswer {
     display: flexbox;
     justify-content: center;
     align-items: flex-end;
+}
+
+
+
+.previcon {
+    transform: rotate(180deg);
 }
 
 
@@ -298,3 +308,60 @@ div.sharebtns-container {
 .return img {
     display: block;
 }
+
+.C {
+    border: none;
+    border-radius: 40%;
+    width: fit-content;
+    height:fit-content;
+    
+}
+
+.Cardbox ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .Cardbox li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .Cardbox .cat {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .Cardbox .btn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .transparent {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit, .delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit img, .delete img, .transparent img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .return {
+    margin-top: 20px;
+    text-align: center;
+  }
+  

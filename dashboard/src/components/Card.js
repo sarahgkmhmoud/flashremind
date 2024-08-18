@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../src/App.css";
-import nextIcon from "../assets/next.png";
-import returnIcon from "../assets/Return.png";
-import discoverIcon from "../assets/discover.png";
+import nextIcon from "../assets/next.svg";
+import returnIcon from "../assets/Return.svg";
+import discoverIcon from "../assets/discover.svg";
 import add_icon from "../assets/add.svg";
+// import previcon from "../assets/prev.svg"
 import { useNavigate, useParams } from "react-router-dom";
 import {
   FacebookIcon,
@@ -62,7 +63,7 @@ export const Card = () => {
 
           const category = response.data.find(
             (category) =>
-              category.userId === parseInt(userID) &&
+              category.userId === (userID) &&
               category.Id === parseInt(CategoryID),
           );
           console.log("category before set:", category); // Debugging line
@@ -151,31 +152,31 @@ export const Card = () => {
       <div className="Cardbox">
         {cards.length > 0 && (
           <>
-            <div className="Question text">
+            <div className="Question transition text">
               <h4>{cards[index].question}</h4>
             </div>
             <div className="text">
               <p className="inline">Answer</p>
-              <button onClick={toggleAnswer}>
+              <button className="transparent" onClick={toggleAnswer}>
                 <img
                   alt="discover"
                   src={discoverIcon}
-                  width={19.94}
-                  height={15.97}
+                  width={24.94}
+                  height={20.97}
                 />
               </button>
               <div
-                className={isVisible ? "visible boxAnswer" : "hidden boxAnswer"}
+                className={isVisible ? "visible boxAnswer transition" : "hidden boxAnswer transition"}
               >
                 <p>{cards[index].answer}</p>
               </div>
             </div>
             <div className="nextCard">
-              <button onClick={handlePrevClick}>
-                <img alt="prev" src={returnIcon} width={30} height={30} />
+              <button className="transparent" onClick={handlePrevClick}>
+                <img className="previcon" alt="prev" src={nextIcon} width={30} height={30} />
               </button>
-              <button onClick={handleNextClick}>
-                <img alt="next" src={nextIcon} width={30} height={30} />
+              <button className="transparent" onClick={handleNextClick}>
+                <img className="next" alt="next" src={nextIcon} width={30} height={30} />
               </button>
             </div>
           </>
@@ -186,14 +187,14 @@ export const Card = () => {
           Edit
         </button>
         <button
-          className="delete red"
+          className="delete red H"
           onClick={() => deleteCard(cards[index].Id)}
         >
           Delete
         </button>
       </div>
-      <div className="sharebtns-container">
-        <ShareCard />
+      <div className="sharebtns-container ">
+        <ShareCard className="H" />
       </div>
     </div>
   );

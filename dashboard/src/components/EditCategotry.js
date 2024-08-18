@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../src/App.css";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import returnIcon from "../assets/Return.png";
+import returnIcon from "../assets/Return.svg";
 
 export const EditCategory = () => {
   const navigate = useNavigate(); // Hook to navigate programmatically

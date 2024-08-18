@@ -29,6 +29,12 @@
       "userName": "madeha",
       "email": "madeha@gmail.com",
       "password": "1c0ff670a2145da6d1513cbe5502bba3e98b375ae9205a9d5d60d81dd8e427fb"
+    },
+    {
+      "id": "052e3d4f-252a-4699-89bc-bac74743a398",
+      "userName": "Ahmed Mahmoud",
+      "email": "ahmedm@gmail.com",
+      "password": "00f54b4bf5b89f6561baee1f4cd3500143c980a53cdf7f092fbfb4c35d7cabbd"
     }
   ],
   "categories": [
@@ -77,6 +83,27 @@
       "userId": "e2853b97-d233-4da4-a1c5-5472a42d279c",
       "Id": 3,
       "categoryname": "k",
+      "cards": []
+    },
+    {
+      "id": "d31c",
+      "userId": "undefined",
+      "Id": 4,
+      "categoryname": "idioms",
+      "cards": [
+        {
+          "Id": 0,
+          "question": "define",
+          "answer": "to state or set forth the meaning of (a word, phrase, etc.):\nThey disagreed on how to define “liberal.”",
+          "categoryId": 4
+        }
+      ]
+    },
+    {
+      "id": "0483",
+      "userId": "undefined",
+      "Id": 5,
+      "categoryname": "animals",
       "cards": []
     }
   ]

@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../../src/App.css";
 import add_icon from "../assets/add.svg";
 import axios from "axios";
-import nextIcon from "../assets/next.png";
-import { useNavigate } from "react-router-dom";
+import nextIcon from "../assets/next.svg";
+import deleticon from '../assets/delete.svg';
+import editicon from '../assets/edit.svg';
+import { useNavigate, useParams } from "react-router-dom";
 
-export const Categories = ({ userID }) => {
+export const Categories = () => {
+  const {userID} = useParams()
   const navigate = useNavigate();
   const handleCategoryClick = (CategoryID) => {
     navigate(`/card/${userID}/${CategoryID}`);
@@ -64,25 +67,31 @@ export const Categories = ({ userID }) => {
               .filter((category) => category.userId === userID)
               .map((category) => (
                 <li className="inline" key={category.id}>
+                  <div className="inline cat">
                   {category.categoryname}
+
                   <button
-                    className="inline"
+
+                    className=" transparent W"
                     onClick={() => handleCategoryClick(category.Id)}
                   >
-                    <img alt="next" src={nextIcon} width={30} height={30} />
+                    <img alt="next" src={nextIcon} width={20} height={20} />
                   </button>
-                  <div className="btn">
+                  </div>
+
+                  <div className="btn inline">
                     <button
-                      className="edit orange H inline"
+                      className="edit orange C H"
                       onClick={() => handleEditcategory(category.Id)}
                     >
-                      Edit
+                      <img className="edit" alt="edit" src={editicon} width={20} height={20}/>
                     </button>
                     <button
-                      className="delete red"
+                      className="delete red C H"
                       onClick={() => deleteCategory(category.Id)}
                     >
-                      Delete
+                    <img className="del" alt="del" src={deleticon} width={20} height={20}/>
+ 
                     </button>
                   </div>
                 </li>

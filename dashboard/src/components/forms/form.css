@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6{
     margin: auto;
     width: 450px;
     height: 80px;
-    background-color: lightgray;
+    background-color: white;
     border-radius: 20px;
 }
 
@@ -155,4 +155,8 @@ button.turngray {
     align-items: center;
     transition: opacity 0.3s;
     opacity: 1;
+  }
+
+  .switch-button{
+    background-color: var(--color-blue);
   }

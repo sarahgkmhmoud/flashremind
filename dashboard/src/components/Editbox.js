@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../../src/App.css'
-import returnIcon from '../assets/Return.png';
-import discoverIcon from '../assets/discover.png';
+import returnIcon from '../assets/Return.svg';
+import discoverIcon from '../assets/discover.svg';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -135,7 +135,7 @@ export const EditBox =() => {
                 </div>
         <div className='text'>
             <p className='inline'>Answer</p>    
-            <img  alt='discover' src={discoverIcon} width={19.94} height={15.97}/>
+            <img  alt='discover' src={discoverIcon} width={24.94} height={20.97}/>
           <div className='boxAnswer'>
             <textarea                 name="answer"
                 onChange={handleInputChange}
