@@ -93,3 +93,9 @@ To get started with the project, follow these steps:
 
 http://localhost:3001/userData
 http://localhost:3001/categories
+
+---
+
+Video Demonstration
+
+https://youtu.be/wloie8tkEOg
