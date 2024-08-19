@@ -31,7 +31,7 @@ FlashRemind is built to provide a simple and effective tool for language learner
 ### Database:
 - **JSON-Server**: For simulating a REST API with a local JSON file (development mode)
 
-### Libraries:
+### Packages:
 - **Axios**: For making HTTP requests to the backend
 - **cryptojs**: For password hashing
 - **React Router DOM**: For managing navigation within the app
@@ -50,15 +50,18 @@ To get started with the project, follow these steps:
 
 2. **Install the necessary dependencies**:
     ```bash
+    cd dashboard
     npm install
     ```
 
 3. **Install JSON-Server globally**:
     ```bash
+    cd dashboard
     npm install -g json-server
     ```
 
 ---
+
 
 ## Setup
 
@@ -73,3 +76,18 @@ To get started with the project, follow these steps:
     ```
 
 ---
+## Routes
+          
+
+- Home "/"
+- Create Category "/Createcategory/:userID"
+- Categories "/Categories/:userID"
+- Edit Category "/Categories/edit/:userID/:CategoryID" 
+- Create Card "/Createcard/:userID/:CategoryID"
+- Card "/card/:userID/:CategoryID"
+- Edit Card "/card/edit/:userID/:CategoryID/:index"
+
+## API Endpoints
+
+http://localhost:3001/userData
+http://localhost:3001/categories
