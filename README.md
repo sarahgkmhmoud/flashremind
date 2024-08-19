@@ -87,6 +87,8 @@ To get started with the project, follow these steps:
 - Card "/card/:userID/:CategoryID"
 - Edit Card "/card/edit/:userID/:CategoryID/:index"
 
+---
+
 ## API Endpoints
 
 http://localhost:3001/userData
