@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/github.io//flashremind.io/static/css/main.91b8b1c9.css",
+    "main.js": "/github.io//flashremind.io/static/js/main.f74e7058.js",
+    "static/media/discover.svg": "/github.io//flashremind.io/static/media/discover.db43577fd721c0e9caac7a1608ca6ad4.svg",
+    "static/media/Return.svg": "/github.io//flashremind.io/static/media/Return.285ed3d2e94c4c8c8b76b2c450edc160.svg",
+    "static/media/next.svg": "/github.io//flashremind.io/static/media/next.eb23690dcd7df525ba0db20053986818.svg",
+    "static/media/edit.svg": "/github.io//flashremind.io/static/media/edit.12cb92e65551e7c443cd63851e39d373.svg",
+    "index.html": "/github.io//flashremind.io/index.html",
+    "static/media/add.svg": "/github.io//flashremind.io/static/media/add.f84e56f19bdef61ab4acacde0991ffc8.svg",
+    "static/media/delete.svg": "/github.io//flashremind.io/static/media/delete.16dab87ddd2c5c6e848f66de2f888421.svg",
+    "main.91b8b1c9.css.map": "/github.io//flashremind.io/static/css/main.91b8b1c9.css.map",
+    "main.f74e7058.js.map": "/github.io//flashremind.io/static/js/main.f74e7058.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91b8b1c9.css",
+    "static/js/main.f74e7058.js"
+  ]
+}
